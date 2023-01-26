@@ -15,7 +15,7 @@ session_start();
 <body>
     <h1>La tua password è:</h1>
     <?php
-    echo $_SESSION['finalPassword']
+    echo $_SESSION['finalPassword'];
     ?>
 </body>
 

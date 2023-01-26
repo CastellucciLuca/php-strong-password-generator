@@ -3,7 +3,7 @@ $passwordCharacters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstu
 $length = $_GET['passwordLenght'];
 
 if (isset($length)) {
-    function generatePassword($length, $passwordCharacters)
+    function generatedPassword($length, $passwordCharacters)
     {
         $passwordString = '';
         for ($i = 0; $i < $length; $i++) {
@@ -30,7 +30,7 @@ if (isset($length)) {
             <button type="submit">Invia</button>
         </form>
         <?php
-        echo generatePassword($length, $charactersForPassword);
+        echo generatedPassword($length, $passwordCharacters);
         ?>  
     </main>
 </body>

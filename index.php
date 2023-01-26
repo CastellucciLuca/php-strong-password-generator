@@ -1,18 +1,9 @@
 <?php
-$passwordCharacters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz|\!£$%&/()=?^*+-=';
-$length = $_GET['passwordLenght'];
+session_start();
+include_once __DIR__ . './functions.php';
 
-if (isset($length)) {
-    function generatedPassword($length, $passwordCharacters)
-    {
-        $passwordString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomNumber = rand(1, strlen($passwordCharacters));
-            $passwordString .= $passwordCharacters[$randomNumber];
-        }
-        return $passwordString;
-    }
-}
+$passwordCharacters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\!$%&/()=?^*+-=';
+$length = $_GET['passwordLenght'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,15 +14,21 @@ if (isset($length)) {
     <title>Strong Password Generator</title>
 </head>
 <body>
-    <main>
+    <header>
         <form action="./index.php" method="GET">
             <label for="password-lenght">Inserisci lunghezza password</label>
             <input type="number" name="passwordLenght" id="password-lenght">
             <button type="submit">Invia</button>
         </form>
+    </header>
+    <main>
         <?php
-        echo generatedPassword($length, $passwordCharacters);
-        ?>  
+        $_SESSION['finalPassword'] = generatedPassword($length, $passwordCharacters);
+        //Redirect
+        if (isset($length)) {
+            header('Location: ./result.php');
+        }
+        ?> 
     </main>
 </body>
 </html>

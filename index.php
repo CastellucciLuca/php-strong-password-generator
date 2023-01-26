@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once __DIR__ . '/functions.php';
+include_once __DIR__ . './partials/functions.php';
 
 $passwordCharacters = '';
 $length = $_GET['passwordLenght'];
